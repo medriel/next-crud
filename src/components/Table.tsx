@@ -1,10 +1,15 @@
 import Client from "../core/Client";
+import { IconEdit, IconTrash } from "./Icons";
 
 interface TableProps {
   clients: Client[]
+  selectedClient?: (client: Client) => void
+  deletedClient?: (client: Client) => void
 }
 
 export default function Table(props: TableProps) {
+
+  const displayActions = props.deletedClient || props.selectedClient
 
   function renderHeader() {
     return (
@@ -18,6 +23,9 @@ export default function Table(props: TableProps) {
         <th className={`
           text-left p-4
         `}>Idade</th>
+        {displayActions ? <th className={`
+          p-4
+        `}>Ações</th> : false}
       </tr>
     )
   }
@@ -40,9 +48,36 @@ export default function Table(props: TableProps) {
           <td className={`
             text-left p-4
           `}>{client.age}</td>
+          {displayActions ? renderActions(client) : false}
         </tr>
       )
     })
+  }
+
+  function renderActions(client: Client) {
+    return (
+      <td className="flex justify-center">
+        {props.selectedClient ? (
+          <button onClick={() => props.selectedClient?.(client)} className={`
+          flex justify-center item-center
+          text-green-600 rounded-full p-2 m-1
+          hover:bg-purple-50
+        `}>
+            {IconEdit}
+          </button>
+        ) : false}
+
+        {props.deletedClient ? (
+          <button onClick={() => props.deletedClient?.(client)} className={`
+          flex justify-center item-center
+          text-red-500 rounded-full p-2 m-1
+          hover:bg-purple-50
+        `}>
+            {IconTrash}
+          </button>
+        ) : false}
+      </td>
+    )
   }
 
   return (

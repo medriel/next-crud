@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Button from "../components/Button";
 import Form from "../components/Form";
 import Layout from "../components/Layout";
@@ -13,12 +14,18 @@ export default function Home() {
     new Client('Pedro', 54, '4'),
   ]
 
+  const [isVisibled, setIsVisibled] = useState<'table' | 'form'>('table')
+
   function selectedClient(client: Client) {
     console.log(client.name)
   }
 
   function deletedClient(client: Client) {
     console.log(`Delete ${client.name} `)
+  }
+
+  function saveClient(client: Client) {
+    console.log(client)
   }
 
   return (
@@ -28,15 +35,31 @@ export default function Home() {
         text-white
       `}>
       <Layout title="Cadastro Simples">
-        <div className="flex flex justify-end">
-          <Button color="green" className="mb-4">Novo Cliente</Button>
-        </div>
-        <Table
-          clients={clients}
-          selectedClient={selectedClient}
-          deletedClient={deletedClient}
-        />
-        <Form client={clients[0]} />
+        {isVisibled === 'table' ? (
+          <>
+            <div className="flex flex justify-end">
+              <Button
+                color="green"
+                className="mb-4"
+                onClick={() => setIsVisibled('form')}
+              >
+                Novo Cliente
+              </Button>
+            </div>
+            <Table
+              clients={clients}
+              selectedClient={selectedClient}
+              deletedClient={deletedClient}
+            />
+          </>
+        )
+          :
+          <Form
+            client={clients[0]}
+            clientAltered={saveClient}
+            canceled={() => setIsVisibled('table')}
+          />
+        }
       </Layout>
     </div>
   )

@@ -4,6 +4,7 @@ Desenvolvendo um CRUD simples em Next.js, utilizando TailwindCSS e TypeScript pa
 
 O projeto consiste em um sistema de cadastro de usuários. Sendo os usuários cadastrados apresentados em uma tabela, podendo ser editado ou removido cada um deles.
 
+## Visualização da aplicação pelo usuário:
 ![image](https://user-images.githubusercontent.com/74268252/147993982-18cec584-9491-4b8a-8c21-33e17ae037ad.png)
 
 ![image](https://user-images.githubusercontent.com/74268252/147994008-0e65b0e6-91e4-4b4d-a931-1686ffc46782.png)

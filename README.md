@@ -2,7 +2,7 @@
 
 Desenvolvendo um CRUD simples em Next.js, utilizando TailwindCSS e TypeScript para praticar os conhecimentos adquiridos no curso de React + Redux ministrado pela Cod3r.
 
-O projeto consiste em um sistema de cadastro de usuários. Sendo os usuários cadastrados apresentados em uma tabela, podendo ser editado ou removido cada um deles.
+O projeto consiste em um sistema de cadastro de usuários. Sendo que os usuários cadastrados são apresentados em uma tabela, podendo ser editado ou deletado cada um deles.
 
 ## Visualização da aplicação pelo usuário:
 ![image](https://user-images.githubusercontent.com/74268252/147993982-18cec584-9491-4b8a-8c21-33e17ae037ad.png)
